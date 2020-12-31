@@ -5,6 +5,11 @@
 
 A wrapper class of IOHIDEventSystemClient and IOHIDServiceClient.
 
+- Getting and setting properties:
+  - kIOHIDServiceInitialKeyRepeatDelayKey
+  - kIOHIDServiceKeyRepeatDelayKey
+  - kIOHIDKeyboardCapsLockDelayOverrideKey
+
 ## Requirements
 
 cpp-osx-iokit_hid_event_system_client depends the following classes.
