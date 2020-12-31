@@ -3,10 +3,7 @@
 
 # cpp-osx-iokit_hid_event_system_client
 
-A wrapper class of IOService notifications.
-
-- `IOServiceAddMatchingNotification(kIOFirstMatchNotification)`
-- `IOServiceAddMatchingNotification(kIOTerminatedNotification)`
+A wrapper class of IOHIDEventSystemClient and IOHIDServiceClient.
 
 ## Requirements
 
