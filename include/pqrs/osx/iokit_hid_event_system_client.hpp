@@ -118,7 +118,6 @@ public:
   }
 
   std::optional<int64_t> get_caps_lock_delay_override(iokit_registry_entry_id::value_t registry_entry_id) const {
-    // kIOHIDServiceCapsLockDelayKey == "HIDCapsLockDelay"
     return get_integer_property<int64_t>(registry_entry_id,
                                          CFSTR(kIOHIDKeyboardCapsLockDelayOverrideKey));
   }
