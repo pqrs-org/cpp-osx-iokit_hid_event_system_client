@@ -27,6 +27,28 @@ int main(void) {
 
       client.reload_service_clients();
 
+      pqrs::osx::iokit_registry_entry entry(service_ptr);
+
+      if (auto vendor_id = entry.find_int64_property(CFSTR("VendorID"))) {
+        std::cout << "    vendor_id " << *vendor_id << std::endl;
+      }
+
+      if (auto product_id = entry.find_int64_property(CFSTR("ProductID"))) {
+        std::cout << "    product_id " << *product_id << std::endl;
+      }
+
+      if (auto manufacturer = entry.find_string_property(CFSTR("Manufacturer"))) {
+        std::cout << "    manufacturer " << *manufacturer << std::endl;
+      }
+
+      if (auto product = entry.find_string_property(CFSTR("Product"))) {
+        std::cout << "    product " << *product << std::endl;
+      }
+
+      if (auto serial_number = entry.find_string_property(CFSTR("SerialNumber"))) {
+        std::cout << "    serial_number " << *serial_number << std::endl;
+      }
+
       if (auto value = client.get_initial_key_repeat(registry_entry_id)) {
         std::cout << "    initial_key_repeat " << *value << std::endl;
       }
