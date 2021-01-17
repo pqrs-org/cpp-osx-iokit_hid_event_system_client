@@ -18,7 +18,11 @@ int main(void) {
 
   pqrs::osx::iokit_hid_event_system_client client;
 
-  if (auto matching_dictionary = IOServiceNameMatching("AppleUserHIDEventDriver")) {
+  if (auto matching_dictionary = IOServiceNameMatching(
+          "AppleUserHIDEventDriver" // Generic devices
+          // "AppleHIDKeyboardEventDriverV2" // Apple Internal Keyboard / Trackpad
+          // "IOHIDEventDriver"
+          )) {
     auto service_monitor = std::make_unique<pqrs::osx::iokit_service_monitor>(dispatcher,
                                                                               matching_dictionary);
 
