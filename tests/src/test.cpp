@@ -1,10 +1,15 @@
-#define CATCH_CONFIG_MAIN
-#include <catch2/catch.hpp>
-
+#include <boost/ut.hpp>
 #include <pqrs/osx/iokit_hid_event_system_client.hpp>
 
-TEST_CASE("iokit_hid_event_system_client") {
-  pqrs::osx::iokit_hid_event_system_client client;
+int main(void) {
+  using namespace boost::ut;
+  using namespace boost::ut::literals;
 
-  REQUIRE(client.make_registry_entry_ids().size() > 0);
+  "iokit_hid_event_system_client"_test = [] {
+    pqrs::osx::iokit_hid_event_system_client client;
+
+    expect(client.make_registry_entry_ids().size() > 0);
+  };
+
+  return 0;
 }
