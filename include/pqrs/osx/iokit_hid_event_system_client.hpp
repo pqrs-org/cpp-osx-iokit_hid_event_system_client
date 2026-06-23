@@ -1,6 +1,6 @@
 #pragma once
 
-// pqrs::osx::iokit_hid_event_system_client v1.1
+// pqrs::osx::iokit_hid_event_system_client v1.2.0
 
 // (C) Copyright Takayama Fumihiko 2020.
 // Distributed under the Boost Software License, Version 1.0.
