@@ -1,4 +1,5 @@
 #include <csignal>
+#include <pqrs/osx/autorelease_pool.hpp>
 #include <pqrs/osx/iokit_hid_event_system_client.hpp>
 #include <pqrs/osx/iokit_service_monitor.hpp>
 
@@ -14,8 +15,12 @@ int main() {
   std::cout << "Type control-c to quit." << std::endl;
 
   auto time_source = std::make_shared<pqrs::dispatcher::hardware_time_source>();
-  auto dispatcher = std::make_shared<pqrs::dispatcher::dispatcher>(time_source);
-  auto run_loop_thread = std::make_shared<pqrs::cf::run_loop_thread>();
+  auto dispatcher = std::make_shared<pqrs::dispatcher::dispatcher>(
+      time_source,
+      pqrs::osx::autorelease_pool::execute_with_autorelease_pool);
+  auto run_loop_thread = std::make_shared<pqrs::cf::run_loop_thread>(
+      pqrs::cf::run_loop_thread::failure_policy::abort,
+      pqrs::osx::autorelease_pool::execute_with_autorelease_pool);
 
   pqrs::osx::iokit_hid_event_system_client client;
 
